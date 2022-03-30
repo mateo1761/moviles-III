@@ -1,24 +1,41 @@
-import React, {Component, SegundoComponente} from "react";
+import React, {Component} from "react";
 
-class PrimerComponent extends Component{
+class PrimerComponente extends Component{
     render(){
+        console.log(this.props);
+        let datos = this.props.datos;
         return(
             <h1>
-                Hola desde la clase
+                Hola {datos.nombre}
+                //profesion: {this.props.datos.profesion}
+                profesion: {datos.profesion}
             </h1>
         );
     }
 }
 
 //Componente de funcion
-export function SegundoComponente(props){
+export function SegundoComponente({nombre , profesion, edad}){
     console.log(props);
     return(
-        <h2>Hola {props.nombre} </h2>
+
+        <>
+        <h2>Hola {props.nombre} mi profesion {props.profesion}</h2>
+        <h2>Hola {nombre} mi profesion {profesion}</h2>
+
+        <button onClick={() => edad}>Ver mi edad</button>
+        </>
+
     );
 }
 
 //componente de flecha
-export let TercerComponente = () => <h3>Hola desde la flecha</h3>;
+export let TercerComponente = (props) => {
+    console.log(props);
 
-export default PrimerComponent;
+    return(
+        <h3>Hola {props.nombre} mi profesion {props.profesion}</h3>
+    );
+}
+
+export default PrimerComponente;

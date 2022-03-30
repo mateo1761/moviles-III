@@ -1,13 +1,28 @@
 import React from "react";
-import PrimerComponent, {SegundoComponente, TercerComponente} from "./primerComponent";
+import PrimerComponente, {SegundoComponente, TercerComponente} from "./PrimerComponente";
 
 function App() {
+
+  let nombre = "mateo";
+  let profesion = "Developer";
+
+  let datos = {
+
+    nombre: "mateo",
+    profesion: "Developer",
+
+  }
+
+  let edad = () => {
+    alert("Su edad es: 25");
+  }
+
   return (
     <>
       <h1>Hola moviles III</h1>
-      <PrimerComponent />
-      <SegundoComponente nombre="Mateo"/>
-      <TercerComponente/>
+      <PrimerComponente datos = {datos}/>
+      <SegundoComponente nombre="Mateo" profesion="practicante developer"/>
+      <TercerComponente nombre={nombre} profesion={profesion} edad={edad}/>
     </>
   );
    
