@@ -21,22 +21,24 @@ export default function Contenedor() {
     
 
     return(
-        <div className="w3-row-padding">
-            {
-                post.map((art, index )=>{
-                    return <Articulos 
-                    key={index }
-                    titulo={art.title}
-                    fecha={art.fecha}
-                    descripcion={art.description}
-                    imagen={art.urlToImage}/>
-                })
-            }
-            <div className="paginacion">
-                <button className="atras">Cargar Menos</button>
-                <span> 1 </span>
-                <button className="adelante">Cargar Más</button>
+        <>
+            <div className="w3-row-padding">
+                {
+                    post.map((art, index )=>{
+                        return <Articulos 
+                        key={index }
+                        titulo={art.title}
+                        fecha={art.publishedAT}
+                        descripcion={art.description}
+                        imagen={art.urlToImage}/>
+                    })
+                }
+                <div className="paginacion">
+                    <button className="atras">Cargar Menos</button>
+                    <span className="numero-paginas"> 1 </span>
+                    <button className="adelante">Cargar Más</button>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
