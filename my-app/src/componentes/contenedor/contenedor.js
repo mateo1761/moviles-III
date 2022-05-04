@@ -16,11 +16,38 @@ export default function Contenedor() {
         return setNoticias(datos.articles);
     }
 
+    //variables paginacion
     const [startPost, setStartPost] = useState();
     const [endPost, setEndPost] = useState();
     const [pageNumber, setPageNumber] = useState(1);
     const limite = 6;
 
+    //variables para los botones
+    const [prevBoton, setPrevBoton] = useState(true);
+    const [nextBoton, setNextBoton] = useState(false);
+
+    //funcion para adelantar paginas
+    const Next = () =>{
+        if(pageNumber === (Math.floor((obtenerDatos.length + limite-1)/limite))){
+            setNextBoton(true);
+        }
+        else{
+            setPageNumber(pageNumber + 1)
+            setPrevBoton(false);
+        }
+    }
+
+    const Prev = () =>{
+        if(pageNumber === 1){
+            setPrevBoton(true);
+        }
+        else{
+            setNextBoton(false);
+            setPageNumber(pageNumber - 1);
+        }
+    }
+
+    //Realizar consultas
     useEffect(()=>{
         obtenerDatos();
 
@@ -47,9 +74,9 @@ export default function Contenedor() {
                 }
             </div>
             <div className="paginacion">
-                    <button className="atras">Cargar Menos</button>
-                    <span className="numero-paginas"> 1 </span>
-                    <button className="adelante">Cargar Más</button>
+                    <button disabled={prevBoton} onClick={Prev} className="atras">Cargar Menos</button>
+                    <span className="numero-paginas"> {pageNumber} </span>
+                    <button disabled={nextBoton} onClick={Next} className="adelante">Cargar Más</button>
             </div>
         </>
     );
