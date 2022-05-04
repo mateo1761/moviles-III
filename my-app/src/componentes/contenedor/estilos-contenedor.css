@@ -1,6 +1,7 @@
 .paginacion{
     display: flex;
     justify-content: center;
+    margin: 10px;
 }
 
 .atras{
@@ -13,4 +14,23 @@
     background-color: red;
     color: aliceblue;
     border-radius: 10px;
+}
+
+.titulo-articulo
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fecha-articulo
+{
+    font-size: 16px;
+    font-style: italic;
+}
+
+.numero-paginas
+{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 20px;
 }

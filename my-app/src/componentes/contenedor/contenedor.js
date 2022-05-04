@@ -15,16 +15,28 @@ export default function Contenedor() {
         console.log(datos.articles);
         return setNoticias(datos.articles);
     }
+
+    const [startPost, setStartPost] = useState();
+    const [endPost, setEndPost] = useState();
+    const [pageNumber, setPageNumber] = useState(1);
+    const limite = 6;
+
     useEffect(()=>{
         obtenerDatos();
-    },[])
+
+        setStartPost((pageNumber - 1)* limite);
+        setEndPost (pageNumber * limite);
+        console.log(startPost);
+        console.log(endPost);
+
+    },[pageNumber, startPost, endPost])
     
 
     return(
         <>
             <div className="w3-row-padding">
                 {
-                    post.map((art, index )=>{
+                    post.slice(startPost, endPost).map((art, index )=>{
                         return <Articulos 
                         key={index }
                         titulo={art.title}
@@ -33,11 +45,11 @@ export default function Contenedor() {
                         imagen={art.urlToImage}/>
                     })
                 }
-                <div className="paginacion">
+            </div>
+            <div className="paginacion">
                     <button className="atras">Cargar Menos</button>
                     <span className="numero-paginas"> 1 </span>
                     <button className="adelante">Cargar Más</button>
-                </div>
             </div>
         </>
     );
